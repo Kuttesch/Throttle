@@ -5,8 +5,8 @@
 int buttons[] = {20, 21, 22, 0, 1, 2, 5, 4, 3};                                                 // Usage: int 'buttonName'[] = {'pin1', 'pin2', ..., 'pinN'};
 
     // Joystick pins
-    int joystickX = A2;                                                                         // Usage: int 'joystickX' = 'pin';
-    int joystickY = A1;                                                                         // Usage: int 'joystickY' = 'pin';
+    int joystick1 = A1;                                                                         // Usage: int 'joystickY' = 'pin';
+    int joystick2 = A2;                                                                         // Usage: int 'joystickX' = 'pin';
 
 
 void setup() {
@@ -30,15 +30,15 @@ void loop() {
     //Button
 
     //Joystick
-        Joystick.Z(constrain(map(analogRead(joystickY), 100, 1000, 0, 1000), 0, 1000));         // Usage: Joystick.'axis'(constrain(map(analogRead('pin'), 'min', 'max', 'min', 'max'), 'min', 'max'));
-        Joystick.Zrotate(constrain(map(analogRead(joystickX), 20, 870, 0, 1000), 0, 1000));     // Usage: Joystick.'axis'(constrain(map(analogRead('pin'), 'min', 'max', 'min', 'max'), 'min', 'max'));
+        Joystick.Z(constrain(map(analogRead(joystick1), 110, 990, 0, 1000), 0, 1000));         // Usage: Joystick.'axis'(constrain(map(analogRead('pin'), 'min', 'max', 'min', 'max'), 'min', 'max'));
+        Joystick.Zrotate(constrain(map(analogRead(joystick2), 30, 860, 0, 1000), 0, 1000));     // Usage: Joystick.'axis'(constrain(map(analogRead('pin'), 'min', 'max', 'min', 'max'), 'min', 'max'));
 
         Joystick.send_now();                                                                    // Send the joystick state to the host computer
     //Joystick
 
     //Dev
-        int zValue = constrain(map(analogRead(joystickY), 100, 1000, 0, 1000), 0, 1000);        // Read the Z-axis value from the joystick
-        int rzValue = constrain(map(analogRead(joystickX), 20, 870, 0, 1000), 0, 1000);         // Read the Rz-axis value from the joystick
+        int zValue = constrain(map(analogRead(joystick1), 110, 990, 0, 1000), 0, 1000);        // Read the Z-axis value from the joystick
+        int rzValue = constrain(map(analogRead(joystick2), 30, 860, 0, 1000), 0, 1000);         // Read the Rz-axis value from the joystick
         Serial.print("Z: ");
         Serial.print(zValue);
         Serial.print(", Rz: ");
